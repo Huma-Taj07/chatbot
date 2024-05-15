@@ -1,0 +1,7 @@
+.mysidbar {
+    background-color: white;
+}
+
+.mysidbar::-webkit-scrollbar {
+    display: none;
+}

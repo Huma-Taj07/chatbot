@@ -1,61 +1,61 @@
-import React from "react";
+import React from 'react'
+import { Transition } from "@headlessui/react";
 import MessageTwoToneIcon from "@mui/icons-material/MessageTwoTone";
+import '../styles/SideBar.css'
 import AddCommentTwoToneIcon from "@mui/icons-material/AddCommentTwoTone";
-import "./side.css";
+import { ArchiveOutlined, PendingActions, ToggleOffOutlined, ToggleOnOutlined } from '@mui/icons-material';
+export default function Sidebar({ isOpen, toggleSidebar }) {
+    return (
+        <Transition
+            show={isOpen}
+            enter="transition-transform ease-out duration-300 transform"
+            enterFrom="-translate-x-full"
+            enterTo="translate-x-0"
+            leave="transition-transform ease-in duration-300 transform"
+            leaveFrom="translate-x-0"
+            leaveTo="-translate-x-full"
+        >
+            <div className="fixed left-0 top-0 h-full w-64  z-50  overflow-y-auto mysidbar">
+                <div className="p-4 border-b flex items-center justify-between">
+                    <div onClick={toggleSidebar} className='cursor-pointer'>
+                        {isOpen ? <ToggleOffOutlined /> : <ToggleOnOutlined />}
+                    </div>
+                    <div onClick={toggleSidebar} className='cursor-pointer'>
+                        <ArchiveOutlined />
+                    </div>
+                </div>
+                <div className="p-4">
+                    <button style={{ backgroundColor: "#5e35b1 " }} className=" text-white px-4 py-2 rounded mb-4">
+                        <AddCommentTwoToneIcon className=" mr-2 w-10 h-10" />
+                        Add New Chat
+                    </button>
+                    <div style={{ backgroundColor: "#EEF2F6" }} className="flex items-center mb-4 py-2 px-2 rounded-xs">
+                        <MessageTwoToneIcon className="w-10 h-5 mr-1" />
+                        <p>Chat one</p>
+                    </div>
+                    <div style={{ backgroundColor: "#EEF2F6" }} className="flex items-center mb-4 py-2 px-2 rounded-xs">
+                        <MessageTwoToneIcon className="w-10 h-5 mr-1" />
+                        <p>Chat one</p>
+                    </div>
+                    <div style={{ backgroundColor: "#EEF2F6" }} className="flex items-center mb-4 py-2 px-2 rounded-xs">
+                        <MessageTwoToneIcon className="w-10 h-5 mr-1" />
+                        <p>Chat one</p>
+                    </div>
+                    <div style={{ backgroundColor: "#EEF2F6" }} className="flex items-center mb-4 py-2 px-2 rounded-xs">
+                        <MessageTwoToneIcon className="w-10 h-5 mr-1" />
+                        <p>Chat one</p>
+                    </div>
+                    <div style={{ backgroundColor: "#EEF2F6" }} className="flex items-center mb-4 py-2 px-2 rounded-xs">
+                        <MessageTwoToneIcon className="w-10 h-5 mr-1" />
+                        <p>Chat one</p>
+                    </div>
 
-class Sample extends React.Component {
-  render() {
-    return <h1>A Computer Science Portal For Geeks</h1>;
-  }
+
+
+                    <div>Chat History</div>
+                    <h1>usaam</h1>
+                </div>
+            </div>
+        </Transition>
+    );
 }
-const Sidebar = () => {
-  return (
-    <div class=" bg-white rounded-t-0 rounded-sm mt-3 ml-2 flex flex-col min-h-screen">
-      <div>
-        <span class="text-[#5E35B1] font-serif text-[1.5rem] mt-6 mb-2 font-extrabold flex items-center justify-center ml-2">
-          French Chatbot.
-        </span>
-      </div>
-      <div class="border-b border-black p-2">
-        <div class="mr-2 ml-2 gap-6 rounded-lg bg-[#EEF2F6] outline-none flex items-center justify-center text-base h-15 px-2">
-          <button class="font-mono font-semibold text-xl">Add New chat</button>
-          <AddCommentTwoToneIcon class="text-purple-700 w-4 h-12" />
-        </div>
-      </div>
-      <div class="overflow-auto flex flex-col justify-center items-center p-3 mt-3 gap-4">
-        <button class="flex justify-center items-center gap-5 m-1 p-4 rounded-xm bg-[#EEF2F6] bg-tran min-h-0 w-30">
-          <MessageTwoToneIcon className="icon" /> Cnn model Implementation
-        </button>
-        <button class="flex justify-center items-center gap-5 m-1 p-4 rounded-xm bg-[#EEF2F6] bg-tran min-h-0 w-30">
-          <MessageTwoToneIcon className="icon" /> Cnn model Implementation
-        </button>
-        <button class="flex justify-center items-center gap-5 m-1 p-4 rounded-xm bg-[#EEF2F6] bg-tran min-h-0 w-30">
-          <MessageTwoToneIcon className="icon" /> Cnn model Implementation
-        </button>
-        <button class="flex justify-center items-center gap-5 m-1 p-4 rounded-xm bg-[#EEF2F6] bg-tran min-h-0 w-30">
-          <MessageTwoToneIcon className="icon" /> Cnn model Implementation
-        </button>
-        <button class="flex justify-center items-center gap-5 m-1 p-4 rounded-xm bg-[#EEF2F6] bg-tran min-h-0 w-30">
-          <MessageTwoToneIcon className="icon" /> Cnn model Implementation
-        </button>
-        <button class="flex justify-center items-center gap-5 m-1 p-4 rounded-xm bg-[#EEF2F6] bg-tran min-h-0 w-30">
-          <MessageTwoToneIcon className="icon" /> Cnn model Implementation
-        </button>
-        <button class="flex justify-center items-center gap-5 m-1 p-4 rounded-xm bg-[#EEF2F6] bg-tran min-h-0 w-30">
-          <MessageTwoToneIcon className="icon" /> Cnn model Implementation
-        </button>
-        <button class="flex justify-center items-center gap-5 m-1 p-4 rounded-xm bg-[#EEF2F6] bg-tran min-h-0 w-30">
-          <MessageTwoToneIcon className="icon" /> Cnn model Implementation
-        </button>
-        <button class="flex justify-center items-center gap-5 m-1 p-4 rounded-xm bg-[#EEF2F6] bg-tran min-h-0 w-30">
-          <MessageTwoToneIcon className="icon" /> Cnn model Implementation
-        </button>
-        <button class="flex justify-center items-center gap-5 m-1 p-4 rounded-xm bg-[#EEF2F6] bg-tran min-h-0 w-30">
-          <MessageTwoToneIcon className="icon" /> Cnn model Implementation
-        </button>
-      </div>
-    </div>
-  );
-};
-
-export default Sidebar;
