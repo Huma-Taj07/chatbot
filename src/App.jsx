@@ -1,8 +1,8 @@
 import React from "react";
-import Sidebar from "./Components/sidebar";
 import SendRoundedIcon from "@mui/icons-material/SendRounded";
 import bot from "./assets/bot.jpg";
 import user1 from "./assets/user1.png";
+import Sidebar from "./Components/side";
 
 function App() {
   return (
@@ -55,6 +55,9 @@ function App() {
       </div>
     </div>
   );
+
 }
 
 export default App;
+
+
