@@ -16,16 +16,13 @@ export default function Sidebar({ isOpen, toggleSidebar }) {
             leaveTo="-translate-x-full"
         >
             <div className="fixed left-0 top-0 h-full w-64  z-50  overflow-y-auto mysidbar">
-                <div className="p-4 border-b flex items-center justify-between">
-                    <div onClick={toggleSidebar} className='cursor-pointer'>
-                        {isOpen ? <ToggleOffOutlined /> : <ToggleOnOutlined />}
-                    </div>
-                    <div onClick={toggleSidebar} className='cursor-pointer'>
-                        <ArchiveOutlined />
-                    </div>
+                <div className="p-4 border-b flex items-center justify-center">
+
+                    <h4 style={{ color: "#5e35b1" }} class="mb-4  font-extrabold leading-none tracking-tight text-gray-900 md:text-1xl lg:text-2xl dark:text-white">French Chatbot</h4>
+
                 </div>
                 <div className="p-4">
-                    <button style={{ backgroundColor: "#5e35b1 " }} className=" text-white px-4 py-2 rounded mb-4">
+                    <button style={{ backgroundColor: "#5e35b1 " }} className=" text-white px-4 py-2 rounded mb-6 mt-4 rounded-xs">
                         <AddCommentTwoToneIcon className=" mr-2 w-10 h-10" />
                         Add New Chat
                     </button>
@@ -49,11 +46,6 @@ export default function Sidebar({ isOpen, toggleSidebar }) {
                         <MessageTwoToneIcon className="w-10 h-5 mr-1" />
                         <p>Chat one</p>
                     </div>
-
-
-
-                    <div>Chat History</div>
-                    <h1>usaam</h1>
                 </div>
             </div>
         </Transition>

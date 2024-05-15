@@ -2,10 +2,10 @@ import { useState } from "react";
 import axios from 'axios';
 import '../styles/MainContent.css';
 import Bot from '../assets/user1.png';
-import { ArrowDropDownOutlined, ExitToApp, SendOutlined, SettingsApplications } from "@mui/icons-material";
+import { ArrowDropDownOutlined, ExitToApp, MenuOpen, SendOutlined, SettingsApplications } from "@mui/icons-material";
 import { Transition } from "@headlessui/react";
 
-export default function MainContent({ isSidebarOpen }) {
+export default function MainContent({ isSidebarOpen, toggleSidebar }) {
     const [isPlansOpen, setIsPlansOpen] = useState(false);
     const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
     const [chatMessage, setChatMessage] = useState("");
@@ -29,7 +29,7 @@ export default function MainContent({ isSidebarOpen }) {
 
     return (
         <div className={`maincontent ${isSidebarOpen ? 'ml-64' : 'ml-0'} p-8`}>
-            <div className="flex justify-between items-center p-4 z-50 bg-gray-100 border-b">
+            {/* <div className="flex justify-between items-center p-4 z-50 bg-gray-100 border-b">
                 <div className="relative">
                     <button onClick={() => setIsPlansOpen(!isPlansOpen)} className="flex items-center space-x-2">
                         <span>French Chatbot</span>
@@ -78,8 +78,11 @@ export default function MainContent({ isSidebarOpen }) {
                         </div>
                     </Transition>
                 </div>
-            </div>
-            <form className="relative flex mt-4 items-center mb-4" onSubmit={handleSendMessage}>
+            </div> */}
+            <form className="relative flex mt-0 items-center mb-4" onSubmit={handleSendMessage}>
+                <div onClick={toggleSidebar}>
+                    <MenuOpen />
+                </div>
                 <input
                     type="text"
                     className="border bg-white rounded-lg px-4 z-0 py-2 w-full shadow-sm pr-10 outline-none"

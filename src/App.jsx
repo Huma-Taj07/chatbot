@@ -34,14 +34,14 @@ const App = () => {
 
   return (
     <div className='page'>
-      <button
+      {/* <button
         className="bg-transparent mt-7 p-2 fixed top-4 left-4 rounded"
         onClick={toggleSidebar}
       >
         {isSidebarOpen ? <ToggleOffOutlined /> : <ToggleOnOutlined />}
-      </button>
+      </button> */}
       <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
-      <MainContent isSidebarOpen={isSidebarOpen} />
+      <MainContent isSidebarOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
     </div>
   );
 };
