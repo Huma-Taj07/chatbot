@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import './App.css';
-import MainContent from './Components/MainContent';
-import Sidebar from "./Components/SideBar.jsx";
-import { ToggleOnOutlined, ToggleOffOutlined } from '@mui/icons-material';
+import React, { useState, useEffect } from "react";
+import MainContent from "./Components/MainContent";
+import Sidebar from "./Components/sidebar";
+import { ToggleOnOutlined, ToggleOffOutlined } from "@mui/icons-material";
 
 const App = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
@@ -20,9 +19,9 @@ const App = () => {
   };
 
   useEffect(() => {
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
     return () => {
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
 
@@ -33,7 +32,7 @@ const App = () => {
   }, [windowWidth]);
 
   return (
-    <div className='page'>
+    <div className="page">
       {/* <button
         className="bg-transparent mt-7 p-2 fixed top-4 left-4 rounded"
         onClick={toggleSidebar}
@@ -41,7 +40,10 @@ const App = () => {
         {isSidebarOpen ? <ToggleOffOutlined /> : <ToggleOnOutlined />}
       </button> */}
       <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
-      <MainContent isSidebarOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
+      <MainContent
+        isSidebarOpen={isSidebarOpen}
+        toggleSidebar={toggleSidebar}
+      />
     </div>
   );
 };

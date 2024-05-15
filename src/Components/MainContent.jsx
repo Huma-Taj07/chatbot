@@ -1,35 +1,47 @@
 import { useState } from "react";
-import axios from 'axios';
-import '../styles/MainContent.css';
-import Bot from '../assets/user1.png';
-import { ArrowDropDownOutlined, ExitToApp, MenuOpen, SendOutlined, SettingsApplications } from "@mui/icons-material";
+import axios from "axios";
+import "../styles/MainContent.css";
+import user1 from "../assets/user1.png";
+import {
+  ArrowDropDownOutlined,
+  ExitToApp,
+  MenuOpen,
+  SendOutlined,
+  SettingsApplications,
+} from "@mui/icons-material";
 import { Transition } from "@headlessui/react";
 
 export default function MainContent({ isSidebarOpen, toggleSidebar }) {
-    const [isPlansOpen, setIsPlansOpen] = useState(false);
-    const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
-    const [chatMessage, setChatMessage] = useState("");
-    const [chatHistory, setChatHistory] = useState([]);
-    const [error, setError] = useState("");
+  const [isPlansOpen, setIsPlansOpen] = useState(false);
+  const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
+  const [chatMessage, setChatMessage] = useState("");
+  const [chatHistory, setChatHistory] = useState([]);
+  const [error, setError] = useState("");
 
-    const handleSendMessage = async (e) => {
-        e.preventDefault();
-        if (chatMessage.trim() !== "") {
-            try {
-                const response = await axios.post('http://localhost:5000/generate', { prompt: chatMessage });
-                const generatedResponse = response.data.response;
-                setChatHistory([...chatHistory, { type: 'user', message: chatMessage }, { type: 'bot', message: generatedResponse }]);
-                setChatMessage("");
-                setError("");
-            } catch (error) {
-                setError("Error generating response. Please try again.");
-            }
-        }
-    };
+  const handleSendMessage = async (e) => {
+    e.preventDefault();
+    if (chatMessage.trim() !== "") {
+      try {
+        const response = await axios.post("http://localhost:5000/generate", {
+          prompt: chatMessage,
+        });
+        const generatedResponse = response.data.response;
+        setChatHistory([
+          ...chatHistory,
+          { type: "user", message: chatMessage },
+          { type: "bot", message: generatedResponse },
+        ]);
+        setChatMessage("");
+        setError("");
+      } catch (error) {
+        setError("Error generating response. Please try again.");
+      }
+    }
+  };
 
-    return (
-        <div className={`maincontent ${isSidebarOpen ? 'ml-64' : 'ml-0'} p-8`}>
-            {/* <div className="flex justify-between items-center p-4 z-50 bg-gray-100 border-b">
+  return (
+    <div className={`maincontent ${isSidebarOpen ? "ml-64" : "ml-0"} p-8`}>
+      {/* <div className="flex justify-between items-center p-4 z-50 bg-gray-100 border-b">
                 <div className="relative">
                     <button onClick={() => setIsPlansOpen(!isPlansOpen)} className="flex items-center space-x-2">
                         <span>French Chatbot</span>
@@ -79,32 +91,44 @@ export default function MainContent({ isSidebarOpen, toggleSidebar }) {
                     </Transition>
                 </div>
             </div> */}
-            <form className="relative flex mt-0 items-center mb-4" onSubmit={handleSendMessage}>
-                <div onClick={toggleSidebar}>
-                    <MenuOpen />
-                </div>
-                <input
-                    type="text"
-                    className="border bg-white rounded-lg px-4 z-0 py-2 w-full shadow-sm pr-10 outline-none"
-                    placeholder="Type your message..."
-                    value={chatMessage}
-                    onChange={(e) => setChatMessage(e.target.value)}
-                />
-                <button type="submit" className="absolute right-2 top-2">
-                    <SendOutlined style={{ color: "#5e35b1" }} className=" w-8 h-8" />
-                </button>
-            </form>
-            {error && <div className="text-red-500 mb-4">{error}</div>}
-            <div>
-                {chatHistory.map((messageObj, index) => (
-                    <div key={index} className={`flex items-start mb-4 ${messageObj.type === 'bot' ? 'flex-row-reverse' : ''}`}>
-                        <img src={Bot} alt="Chatbot" className="chatimg mr-2 w-10 h-10 object-cover" />
-                        <div className="bg-gray-200 p-3 rounded-xs">
-                            {messageObj.message}
-                        </div>
-                    </div>
-                ))}
-            </div>
+      <form
+        className="relative flex mt-0 items-center mb-4"
+        onSubmit={handleSendMessage}
+      >
+        <div onClick={toggleSidebar}>
+          <MenuOpen />
         </div>
-    );
+        <input
+          type="text"
+          className="border bg-white rounded-lg px-4 z-0 py-2 w-full shadow-sm pr-10 outline-none"
+          placeholder="Type your message..."
+          value={chatMessage}
+          onChange={(e) => setChatMessage(e.target.value)}
+        />
+        <button type="submit" className="absolute right-2 top-2">
+          <SendOutlined style={{ color: "#5e35b1" }} className=" w-8 h-8" />
+        </button>
+      </form>
+      {error && <div className="text-red-500 mb-4">{error}</div>}
+      <div>
+        {chatHistory.map((messageObj, index) => (
+          <div
+            key={index}
+            className={`flex items-start mb-4 ${
+              messageObj.type === "bot" ? "flex-row-reverse" : ""
+            }`}
+          >
+            <img
+              src={user1}
+              alt="Chatbot"
+              className="chatimg mr-2 w-10 h-10 object-cover"
+            />
+            <div className="bg-gray-200 p-3 rounded-xs">
+              {messageObj.message}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
 }

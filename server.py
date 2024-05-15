@@ -1,11 +1,13 @@
 from flask import Flask, request, jsonify
 import google.generativeai as genai
+from flask_cors import CORS
 
 # Configure Generative AI (assuming you have the necessary credentials)
 genai.configure(api_key="AIzaSyDBz1MC-RTok81bjp-Bdvx6mxc8bjQChTI")
 model = genai.GenerativeModel('gemini-pro', generation_config={"temperature": 0.7})
 
 app = Flask(__name__)
+CORS(app)
 
 @app.route('/generate', methods=['POST'])
 def generate_story():
